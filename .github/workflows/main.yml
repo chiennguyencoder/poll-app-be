@@ -56,6 +56,6 @@ jobs:
             aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 057088884501.dkr.ecr.us-east-1.amazonaws.com
             docker stop $(docker ps -aq)
             docker pull $REGISTRY/$REPOSITORY:$IMAGE_TAG
-            docker run -d -p 3000:3000 --env PORT=$PORT --env DATABASE_URL=$DATABASE_URL $REGISTRY/$REPOSITORY:$IMAGE_TAG
+            docker run -d -p 3001:3000 --env PORT=$PORT --env DATABASE_URL=$DATABASE_URL $REGISTRY/$REPOSITORY:$IMAGE_TAG
             docker container prune -f
             docker image prune -a -f
